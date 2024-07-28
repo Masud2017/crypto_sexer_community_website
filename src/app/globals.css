@@ -105,3 +105,38 @@ a {
     color-scheme: dark;
   }
 }
+
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 2rem;
+  color : white;
+  align-items: center;
+}
+
+.nav-brand {
+  height : 2rem;
+  width: 2rem;
+  border-radius: 50%;
+}
+
+.nav-item-grp {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap : 0.5rem;
+}
+
+.nav-item {
+  text-decoration: none;
+  background-color: yellow;
+  color : blue;
+  padding : .5rem 1rem;
+  border: none;
+  border-radius: .2rem;
+}
+
+.container {
+  margin : 0 2rem;
+}
