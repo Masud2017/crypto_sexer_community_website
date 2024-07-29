@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Link from "next/link";
 import "./globals.css";
+
+import Theme from "./theme";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,19 +17,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <nav className = "nav">
-          <img src = "https://pngimg.com/uploads/pokemon/pokemon_PNG14.png" className = "nav-brand" alt = "Something went wrong"/>
-          <div className = "nav-item-grp">
-            <Link href= "/" className = "nav-item">Home</Link>
-            <Link href = "/api" className = "nav-item">Signin</Link>
-            <a href = "#" className = "nav-item">Signup</a>
-          </div>
-        </nav>
-        {children}
-        </body>
-    </html>
+    <Theme children = {children}/>
   );
 }
