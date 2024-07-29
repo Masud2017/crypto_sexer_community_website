@@ -1,9 +1,17 @@
-import { Paper, Typography } from "@mui/material";
+import { Paper, Stack, Typography } from "@mui/material";
 
 export default function Home() {
   return (
     <>
-      <Typography variant="h2">Hello world this is the body</Typography>
+      <Stack direction = "row" gap= "0.5rem" justifyContent={"center"} p={"1rem"}>
+        <Paper sx={{height : "10rem",backgroundColor: "secondary.main",width : "40rem",padding: "1rem"}}>
+kj
+        </Paper>
+
+        <Paper sx={{height : "10rem",backgroundColor: "secondary.main", width : "40rem", padding: "1rem"}}>
+lkj
+        </Paper>
+      </Stack>
       
 
     </>

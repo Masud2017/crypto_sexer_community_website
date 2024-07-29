@@ -9,7 +9,7 @@ import ChatIcon from '@mui/icons-material/Chat';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import Link from "next/link";
 import { useState } from "react";
-import ChatBox from "@/_components/Message";
+import ChatBox from "@/_components/ChatBox";
 
 
 
@@ -106,13 +106,15 @@ export default function Theme({children}: {children:React.ReactNode}) {
                                     <Link href= "#"><Chip label = "Indicators" variant = "outlined"/></Link>
                                     <Link href= "#"><Chip label = "News" variant = "outlined"/></Link>
                                     <Link href= "#"><Chip label = "CS" variant = "outlined"/></Link>
-                                    <Link href= "/login"><Chip label = "Signin/Signup" variant = "outlined"/></Link>
+                                    <Link href= "/login"><Chip label = "Signin" variant = "outlined"/></Link>
+                                    <Link href= "/signup"><Chip label = "Signup" variant = "outlined"/></Link>
+
                                 </Box>
                                 
                             </Toolbar>
                         </AppBar>
                     </Box>
-                    <Container sx={{backgroundColor: theme.palette.primary}}>
+                    <Container sx={{backgroundColor: "primary.main"}}>
                     </Container>
                     <AppRouterCacheProvider>
                         <CssBaseline/>
@@ -121,7 +123,7 @@ export default function Theme({children}: {children:React.ReactNode}) {
                     
                     <ChatBox showMsgBox = {showMsgBox} setShowMsgBox={setShowMsgBox}  setMsgFabShow={setMsgFabShow} />
                     
-                    {msgFabShow && <Fab onClick={()=> {setShowMsgBox(true); setMsgFabShow(false)}} color ="secondary" aria-label = "add" sx = {{position:"fixed",right:"3rem",bottom:"4rem"}}>
+                    {msgFabShow && <Fab onClick={()=> {setShowMsgBox(true); setMsgFabShow(false)}} color ="tertiary" aria-label = "add" sx = {{position:"fixed",right:"3rem",bottom:"4rem"}}>
                         <ChatIcon/>
                     </Fab>}
                     </body>
