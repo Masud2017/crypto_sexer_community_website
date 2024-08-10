@@ -1,0 +1,28 @@
+// "use server"
+// import {getAuth, signInWithEmailAndPassword } from "@/config/firebase_web";
+// import { Auth } from "firebase/auth";
+// import { cookies } from "next/headers";
+// import { redirect } from "next/navigation";
+
+
+// export default async function LoginUser(formData : FormData) {
+//     let auth: Auth = getAuth()!;
+//     let prom = await signInWithEmailAndPassword(auth,formData.get("email")?.toString()!,formData.get("pass")?.toString()!);
+//     let token = await prom.user.getIdTokenResult();
+
+//     let expiryDate = new Date();
+//     expiryDate.setDate(expiryDate.getDate() + 7);
+//     cookies().set({
+//         name: "access_token",
+//         value: token.token,
+//         httpOnly: false,
+//         path: "/",
+//         maxAge: 60 * 60 * 24 * 365 * 1000,
+//         expires: new Date(Date.now() + 60 * 60 * 24 * 365 * 1000),
+//       });
+//     auth.onAuthStateChanged(data=> {
+//         console.log(data)
+//     })
+//     redirect("/")
+
+// }

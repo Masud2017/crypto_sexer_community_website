@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import Theme from "./theme";
+import SessionProvider from "./SessionProvider";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,8 +18,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
   return (
-    <Theme children = {children}/>
+      <SessionProvider>
+        <Theme children = {children}/>
+      </SessionProvider>
   );
 }

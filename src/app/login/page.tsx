@@ -4,21 +4,31 @@
 import { Box, Button, Fab, InputAdornment, Paper, TextField } from "@mui/material";
 import KeyIcon from '@mui/icons-material/Key';
 import LoginIcon from '@mui/icons-material/Login';
+import GoogleIcon from '@mui/icons-material/Google';
+
+import { getCookie, setCookie } from "cookies-next";
+import { signIn } from "next-auth/react";
+import { useState } from "react";
 
 
 export default function LoginPage() {
+    // setCookie("hyo","YO")
+    const [password,setPassword] = useState("");
+    const [email,setEmail] = useState("");
+
     return (
         <Box display = "flex" justifyContent="center" alignItems="center" height="100vh" >
             <Paper elevation={2}>
                 <Box height = "20rem" width = "30rem" display="flex" justifyContent="center" flexDirection="column" bgcolor="secondary.main" padding="2rem" borderRadius="0.3rem">
-                    <form action = "#" method = "POST">
+                    <form>
                         <TextField
                             required
-                            id="outlined-required"
                             label="Email"
                             name="email"
                             placeholder="Enter your email"
                             fullWidth={true}
+                            onChange={(e)=>{
+                                setEmail(e.target.value)}}
                             type="email"
                             
                             
@@ -26,7 +36,6 @@ export default function LoginPage() {
 
                         <TextField
                             required
-                            id="outlined-required"
                             label="Password"
                             name="pass"
                             placeholder="Enter your password"
@@ -40,9 +49,14 @@ export default function LoginPage() {
                                 </InputAdornment>
                                 ),
                             }}
+                            onChange={(e)=>{
+                                setPassword(e.target.value)}}
                             />
 
-                        <Button type = "submit" variant="contained" startIcon={<LoginIcon/>} color={"background"} fullWidth={true} sx={{marginTop:"2rem"}}>Submit</Button>
+                        <Button  disabled={!email || !password}  onClick={() => signIn('credentials', {email, password, redirect: true, callbackUrl: '/'})} type = "submit" variant="contained" startIcon={<LoginIcon/>} color={"background"} fullWidth={true} sx={{marginTop:"2rem"}}>Submit</Button>
+                        <Button  onClick={() => signIn('google')} variant="contained" startIcon={<GoogleIcon color="error"/>} color={"neutral"}  sx={{marginTop:"0.5rem"}}>Signup</Button>
+                        {/* <Button  onClick={() => signIn('facebook')} variant="contained" startIcon={<GoogleIcon color="error"/>} color={"neutral"}  sx={{marginTop:"0.5rem"}}>Signup</Button> */}
+
                     </form>
                 </Box>
             </Paper>

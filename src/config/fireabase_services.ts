@@ -1,0 +1,12 @@
+/**
+ * Codes and functions from this file can be accessed in both server and client side
+ * @author Md. Masud karim
+ * @email msmasud578@gmail.com
+ * @license MIT
+ * @copyright 2024
+ */
+
+import { getFirestore as getFireStoreAdmin} from "firebase-admin/firestore";
+import { getFirestore as getFireStoreClient } from "firebase/firestore";
+
+export {getFireStoreAdmin, getFireStoreClient};
