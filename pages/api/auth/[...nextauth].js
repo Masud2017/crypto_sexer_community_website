@@ -18,7 +18,6 @@ export const authOptions = {
       async authorize(credentials, req) {
         return await signInWithEmailAndPassword(getAuth(),credentials.email,credentials?.password).then(userCred=>{
           if (userCred.user) {
-              
               return userCred.user;
           } else {
               return null;
@@ -31,9 +30,10 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      async authorization() {
-        alert("YO what's up ? ")
-      }
+      // async authorization() {
+      //   debugger;
+      //   alert("YO what's up ? ")
+      // }
     }),
     FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID,

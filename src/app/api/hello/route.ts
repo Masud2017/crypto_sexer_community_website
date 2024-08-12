@@ -6,4 +6,5 @@ export async function GET() {
     
     cookies().delete("hem")
 
-    return NextResponse.json({"hello": cookies().get("next-auth.session-token")?.value})}
+    return NextResponse.json({"hello": cookies().get("next-auth.session-token")?.value})
+}
