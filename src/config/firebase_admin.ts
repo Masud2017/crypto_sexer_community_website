@@ -1,6 +1,6 @@
 import "server-only";
 import firebaseAdminJson from "./firebase.json";
-import admin, { ServiceAccount } from "firebase-admin";
+import admin, { ServiceAccount, firestore } from "firebase-admin";
 
 import fs from 'fs';
 import path from 'path';
@@ -26,6 +26,7 @@ export function createAdminApp() {
         credential: admin.credential.cert("./firebase.json"),
     });
 }
+
 
 export {firestoreAdmin,authAdmin}
 

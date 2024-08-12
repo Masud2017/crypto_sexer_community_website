@@ -30,7 +30,10 @@ export const authOptions = {
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      async authorization() {
+        alert("YO what's up ? ")
+      }
     }),
     FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID,

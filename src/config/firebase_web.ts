@@ -9,6 +9,7 @@ import { onAuthStateChanged } from "firebase/auth/web-extension";
 import firebase from "firebase/compat/app";
 import {setCookie} from "cookies-next";
 import { redirect } from "next/navigation";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -20,20 +21,22 @@ const firebaseConfig = {
     measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID
 };
 
-firebase.initializeApp(firebaseConfig);
+let app = firebase.initializeApp(firebaseConfig);
+export {app};
 
 
 export async function createFirebaseBaseSession() {
 }
 let auth = getAuth();
-onAuthStateChanged(auth,(user)=> {
-    if (auth.currentUser?.emailVerified == false) {
-        redirect("/");
-    }
-    setCookie("user_mail from onAuthState_changed",user?.email)
+// onAuthStateChanged(auth,(user)=> {
+//     if (auth.currentUser?.emailVerified == false) {
+//         redirect("/");
+//     }
+//     setCookie("user_mail from onAuthState_changed",user?.email)
 
-})
+// })
 
+let fireStoreClient = getFirestore(app);
 
 
 export {getAuth,
@@ -41,4 +44,6 @@ export {getAuth,
         signInWithEmailAndPassword, 
         signOut, 
         sendEmailVerification, 
-        sendPasswordResetEmail}
+        sendPasswordResetEmail,
+        fireStoreClient
+    }

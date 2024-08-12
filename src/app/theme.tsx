@@ -125,13 +125,13 @@ export default function Theme({children}: {children:React.ReactNode}) {
                                     </Toolbar>
                                 </AppBar>
                             </Box>
-                            <Container sx={{backgroundColor: "primary.main"}}>
-                            </Container>
+                            
                             <AppRouterCacheProvider>
                                 <CssBaseline/>
             {session?.data?.user?.email}
-
+                            <Container sx={{backgroundColor: "primary.main"}}>
                                 {children}
+                            </Container>
                             </AppRouterCacheProvider>
                             
                             <ChatBox showMsgBox = {showMsgBox} setShowMsgBox={setShowMsgBox}  setMsgFabShow={setMsgFabShow} />
