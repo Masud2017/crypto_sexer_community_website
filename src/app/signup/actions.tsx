@@ -32,8 +32,9 @@ export default async function SignupUser(prevState: any,formData: FormData) {
     let message = "";
 
       let res = await  createUserWithEmailAndPassword(auth,email,password).then(userCred => {
+        console.log("Sign up")
         userRepo.addUser(auth.currentUser?.uid ?? "", name ?? "");
-      }).then(userCred=> sendEmailVerification(auth.currentUser!)).then(()=> message = "Verification").catch(e => message = e)
+      }).then(userCred=> sendEmailVerification(auth.currentUser!)).then(()=> message = "Verification").catch(e => message = e);
 
       return {message : message,isLoading : false};
 }

@@ -8,15 +8,16 @@ import FacebookProvider from "next-auth/providers/facebook";
 
 export const authOptions = {
   pages:{
-    signIn:"/login",
-    signOut:"/logout"
+    signIn:"/login"
   },
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {},
       async authorize(credentials, req) {
-        return await signInWithEmailAndPassword(getAuth(),credentials.email,credentials?.password).then(userCred=>{
+        return await signInWithEmailAndPassword(getAuth(),credentials?.email,credentials?.password).then(userCred=>{
+          console.log(getAuth().credentials.email);
+          console.log("Authentcation done ..")
           if (userCred.user) {
               return userCred.user;
           } else {
@@ -30,15 +31,7 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      // async authorization() {
-      //   debugger;
-      //   alert("YO what's up ? ")
-      // }
-    }),
-    FacebookProvider({
-      clientId: process.env.FACEBOOK_CLIENT_ID,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET
     })
-  ]
+  ],
 }
 export default NextAuth(authOptions)

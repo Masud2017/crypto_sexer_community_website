@@ -8,13 +8,16 @@ import GoogleIcon from '@mui/icons-material/Google';
 
 import { getCookie, setCookie } from "cookies-next";
 import { signIn } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export default function LoginPage() {
     // setCookie("hyo","YO")
     const [password,setPassword] = useState("");
     const [email,setEmail] = useState("");
+    useEffect(()=> {
+        console.log(email , " ", password);
+    });
 
     return (
         <Box display = "flex" justifyContent="center" alignItems="center" height="100vh" >
@@ -54,7 +57,7 @@ export default function LoginPage() {
                             />
 
                         <Button  disabled={!email || !password}  onClick={() => signIn('credentials', {email, password, redirect: true, callbackUrl: '/'})} type = "submit" variant="contained" startIcon={<LoginIcon/>} color={"background"} fullWidth={true} sx={{marginTop:"2rem"}}>Submit</Button>
-                        <Button  onClick={() => signIn('google')} variant="contained" startIcon={<GoogleIcon color="error"/>} color={"neutral"}  sx={{marginTop:"0.5rem"}}>Signup</Button>
+                        {/* <Button  onClick={() => signIn('google')} variant="contained" startIcon={<GoogleIcon color="error"/>} color={"neutral"}  sx={{marginTop:"0.5rem"}}>Signup</Button> */}
                         {/* <Button  onClick={() => signIn('facebook')} variant="contained" startIcon={<GoogleIcon color="error"/>} color={"neutral"}  sx={{marginTop:"0.5rem"}}>Signup</Button> */}
 
                     </form>
