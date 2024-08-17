@@ -12,18 +12,18 @@ class PostRepository {
     async addPost(title:string, body:string, uid:string) {
         // let res = await this.fireStore.collection(this.collectionName).doc(uid).set({title: title, body: body, createdAt: new Date(Date.now()).toLocaleString()});
         await this.fireStore
-                                    .collection(this.collectionName)
-                                    .doc(uid)
-                                    .collection("userPosts")
-                                    .doc() // post id
-                                    .set({
-                                            title: title, 
-                                            body: body, 
-                                            createdAt: new Date(Date.now()).toLocaleString()
-                                        },
-                                        {
-                                            merge:true
-                                        });
+                    .collection(this.collectionName)
+                    .doc(uid)
+                    .collection("userPosts")
+                    .doc() // post id
+                    .set({
+                            title: title, 
+                            body: body, 
+                            createdAt: new Date(Date.now()).toLocaleString()
+                        },
+                        {
+                            merge:true
+                        });
     }
 
     async getMyPosts(uid:string):Promise<any[]> {

@@ -30,7 +30,22 @@ class NewsRepository {
             return false;
         }
     }
-    async getNews() {} // specific
+    async getNews(uid:string) {
+        let resArr:any[] =[]
+        console.log("User id : ",uid);
+
+        await this.fireStore.collection(this.collectionName).doc(uid).collection("userPosts").get().then(item=> {
+            item.docs.forEach(item2=> {
+                if (item2.exists) {
+                    console.log(item2.data.toString())
+                    resArr.push({"docId" : item2.id,"data":item2.data()});
+                }
+                
+            })
+        });
+
+        return resArr;
+    } // specific
     async getAllNews() {}
     async deleteNews() {}
     async updateNews() {}
